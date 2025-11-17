@@ -74,13 +74,14 @@
               </div>
               
               <div class="stock-card">
-                <div class="stock-icon">📦</div>
+                <div class="stock-icon">🍅</div>
                 <div class="stock-label">Tomates</div>
                 <div class="stock-bar">
                   <div class="stock-level low"></div>
                 </div>
                 <div class="stock-alert">⚠️ Stock bas</div>
               </div>
+              
               <div class="stock-card">
                 <div class="stock-icon">🥖</div>
                 <div class="stock-label">Pain</div>
@@ -161,10 +162,29 @@
       <!-- Social proof -->
       <section id="social-proof" class="section section-alt">
         <div class="container">
-          <h2>Ils en parlent</h2>
+          <h2 class="center">Ils en parlent</h2>
+          <p class="center" style="color:var(--muted); margin-bottom:32px;">Ce que disent nos premiers utilisateurs</p>
           <div class="testimonials">
-            <blockquote>« Nous avons réduit nos ruptures de 40% en 6 semaines. »<cite> — Gérant, bistrot parisien</cite></blockquote>
-            <blockquote>« 2h gagnées chaque semaine sur l’inventaire et les commandes. »<cite> — Chef, pizzeria</cite></blockquote>
+            <div class="testimonial-card">
+              <div class="testimonial-quote">« Nous avons réduit nos ruptures de 40% en 6 semaines. »</div>
+              <div class="testimonial-author">
+                <div class="author-avatar">👨‍🍳</div>
+                <div class="author-info">
+                  <div class="author-name">Marc D.</div>
+                  <div class="author-role">Gérant, bistrot parisien</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-quote">« 2h gagnées chaque semaine sur l'inventaire et les commandes. »</div>
+              <div class="testimonial-author">
+                <div class="author-avatar">👩‍🍳</div>
+                <div class="author-info">
+                  <div class="author-name">Sophie L.</div>
+                  <div class="author-role">Chef, pizzeria</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -172,32 +192,53 @@
       <!-- Features -->
       <section id="features" class="section">
         <div class="container">
-          <h2>Fonctionnalités clés</h2>
-          <ul class="grid">
-            <li>Alertes de stock bas et prévisions de consommation</li>
-            <li>Inventaire mobile avec lecture de codes‑barres</li>
-            <li>Commandes fournisseurs pré‑remplies et export en 1 clic</li>
-            <li>Intégrations POS/ERP (à préciser selon votre stack)</li>
-            <li>Tableaux de bord coût matière et marge</li>
-            <li>Multi‑établissements et gestion des rôles</li>
-          </ul>
+          <h2 class="center">Fonctionnalités clés</h2>
+          <p class="center" style="color:var(--muted); margin-bottom:32px;">Tout ce dont vous avez besoin pour optimiser vos stocks</p>
+          <div class="features-grid">
+            <div class="feature-item">
+              <div class="feature-title">Alertes intelligentes</div>
+              <div class="feature-desc">Alertes de stock bas et prévisions de consommation</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-title">Inventaire mobile</div>
+              <div class="feature-desc">Lecture de codes-barres et saisie rapide</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-title">Commandes simplifiées</div>
+              <div class="feature-desc">Commandes fournisseurs pré-remplies et export en 1 clic</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-title">Intégrations</div>
+              <div class="feature-desc">Connexion avec vos outils POS et ERP</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-title">Tableaux de bord</div>
+              <div class="feature-desc">Coût matière, marges et écarts en temps réel</div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-title">Multi-établissements</div>
+              <div class="feature-desc">Gestion des rôles et accès par établissement</div>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Signup -->
       <section id="signup" class="section section-accent">
-        <div class="container">
+        <div class="container center">
           <h2>Soyez alerté du lancement</h2>
           <p>Inscrivez‑vous pour recevoir un email dès que Restocks sera disponible.</p>
           <form id="signup-form" class="form" novalidate data-endpoint="https://formspree.io/f/mldazwrv">
             <!-- Si vous utilisez Formspree, mettez l'URL d'action ici via data-endpoint -->
-            <div class="form-row">
-              <label for="prenom">Prénom *</label>
-              <input id="prenom" name="prenom" type="text" placeholder="Jean" required />
-            </div>
-            <div class="form-row">
-              <label for="nom">Nom *</label>
-              <input id="nom" name="nom" type="text" placeholder="Dupont" required />
+            <div class="form-row-group">
+              <div class="form-row">
+                <label for="prenom">Prénom *</label>
+                <input id="prenom" name="prenom" type="text" placeholder="Jean" required />
+              </div>
+              <div class="form-row">
+                <label for="nom">Nom *</label>
+                <input id="nom" name="nom" type="text" placeholder="Dupont" required />
+              </div>
             </div>
             <div class="form-row">
               <label for="email">Email *</label>

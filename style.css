@@ -38,27 +38,108 @@ img{max-width:100%; display:block}
 .lead{font-size: clamp(17px, 2.6vw, 22px); color:var(--muted); margin:0 0 28px; line-height:1.6}
 .mockup{width:100%; height:auto; filter:drop-shadow(0 10px 24px rgba(2,6,23,.15)); border-radius:12px; object-fit:cover; aspect-ratio:4/3}
 
-.animation-container{background:linear-gradient(135deg,#fff 0%,#fff7ed 100%); padding:32px; min-height:320px; display:flex; flex-direction:column; gap:16px; justify-content:center}
-.stock-card{background:white; border:2px solid #fef3e2; border-radius:12px; padding:16px; display:grid; grid-template-columns:48px 1fr 80px; gap:12px; align-items:center; animation:slideIn .6s ease forwards; opacity:0; position:relative}
-.stock-card:nth-child(1){animation-delay:.2s}
-.stock-card:nth-child(2){animation-delay:.5s}
-.stock-card:nth-child(3){animation-delay:.8s}
-.stock-icon{font-size:32px; text-align:center}
-.stock-label{font-weight:600; color:var(--text)}
-.stock-bar{height:12px; background:#f1f5f9; border-radius:6px; overflow:hidden}
-.stock-level{height:100%; border-radius:6px; animation:fillBar 1.5s ease forwards; width:0}
-.stock-level.low{background:linear-gradient(90deg,#dc2626,#ef4444); animation-delay:1s; width:20%}
-.stock-level.ok{background:linear-gradient(90deg,#f59e0b,#fbbf24); animation-delay:1.3s; width:55%}
-.stock-level.good{background:linear-gradient(90deg,#10b981,#34d399); animation-delay:1.6s; width:85%}
-.stock-alert{grid-column:2/4; font-size:13px; color:#dc2626; font-weight:600; animation:pulse 2s ease infinite}
-.command-pulse{background:#10b981; color:white; padding:14px 20px; border-radius:10px; text-align:center; font-weight:600; animation:slideUp 1s ease 2.2s forwards, glowGreen 2s ease 2.5s infinite; opacity:0; box-shadow:0 4px 12px rgba(16,185,129,.3)}
+.animation-container{
+  background:linear-gradient(135deg,#fff 0%,#fff7ed 100%);
+  padding:24px;
+  border-radius:16px;
+  box-shadow:0 4px 24px rgba(234,88,12,.1);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+@media(min-width:768px){
+  .animation-container{padding:32px; gap:16px}
+}
+.stock-card{
+  background:white;
+  border:2px solid #fed7aa;
+  border-radius:12px;
+  padding:12px;
+  display:grid;
+  grid-template-columns:40px 1fr 70px;
+  gap:10px;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,.04);
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+@media(min-width:768px){
+  .stock-card{
+    padding:16px;
+    grid-template-columns:48px 1fr 90px;
+    gap:12px;
+  }
+}
+.stock-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 4px 16px rgba(234,88,12,.15);
+}
 
-@keyframes slideIn{to{opacity:1; transform:translateX(0)}}
-@keyframes fillBar{from{width:0}}
-@keyframes slideUp{to{opacity:1; transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1} 50%{opacity:.6}}
-@keyframes glow{0%,100%{box-shadow:0 4px 12px rgba(234,88,12,.3)} 50%{box-shadow:0 6px 20px rgba(234,88,12,.6)}}
-@keyframes glowGreen{0%,100%{box-shadow:0 4px 12px rgba(16,185,129,.3)} 50%{box-shadow:0 6px 20px rgba(16,185,129,.6)}}
+.stock-icon{
+  font-size:28px;
+  text-align:center;
+}
+@media(min-width:768px){
+  .stock-icon{font-size:32px}
+}
+.stock-label{font-weight:600; color:var(--text)}
+.stock-bar{
+  height:10px;
+  background:#f1f5f9;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.1);
+}
+@media(min-width:768px){
+  .stock-bar{height:12px}
+}
+.stock-level{
+  height:100%;
+  border-radius:6px;
+  transition:width .8s ease;
+}
+.stock-level.low{
+  background:linear-gradient(90deg,#dc2626,#ef4444);
+  width:20%;
+}
+.stock-level.ok{
+  background:linear-gradient(90deg,#f59e0b,#fbbf24);
+  width:55%;
+}
+.stock-level.good{
+  background:linear-gradient(90deg,#10b981,#34d399);
+  width:85%;
+}
+.stock-alert{
+  grid-column:2/4;
+  font-size:12px;
+  color:#dc2626;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+@media(min-width:768px){
+  .stock-alert{font-size:13px}
+}
+.command-pulse{
+  background:linear-gradient(135deg,#10b981,#059669);
+  color:white;
+  padding:12px 16px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  font-size:14px;
+  box-shadow:0 4px 16px rgba(16,185,129,.25);
+  margin-top:4px;
+}
+@media(min-width:768px){
+  .command-pulse{
+    padding:14px 20px;
+    font-size:15px;
+  }
+}
+
+
 
 h2{font-size: clamp(22px, 3vw, 28px); margin:0 0 16px}
 .benefits-title{margin-top:64px}

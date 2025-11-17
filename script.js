@@ -38,12 +38,12 @@
     a: {
       title: 'Arrêtez de perdre de l\'argent à cause de vos stocks.',
       subtitle: 'Chaque rupture vous coûte des clients. Chaque surstock grignote votre marge. Notre outil anticipe vos besoins et automatise l\'inventaire — en 10 minutes par jour.',
-      cta: 'Commencer mon essai gratuit'
+      cta: 'Je m\'inscris sur la liste d\'attente'
     },
     b: {
       title: 'Anticipez vos besoins, protégez votre marge.',
       subtitle: 'Des alertes intelligentes et des prévisions fiables pour réduire les pertes et gagner du temps, sans complexité.',
-      cta: 'Découvrir la démo'
+      cta: 'Rejoindre la liste d\'attente'
     }
   };
   const v = variants[variant] || variants.a;

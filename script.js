@@ -22,7 +22,7 @@
   }
 
   // A/B testing (headline + CTA) with URL override & localStorage stickiness
-  const AB_KEY = 'ab_variant_stoqa';
+  const AB_KEY = 'ab_variant_restocks';
   const params = new URLSearchParams(window.location.search);
   let variant = params.get('variant');
   if (!variant) {
@@ -68,10 +68,11 @@
     const endpoint = form.getAttribute('data-endpoint') || '';
     const formData = new FormData(form);
     const email = String(formData.get('email') || '').trim();
-    const name = String(formData.get('name') || '').trim();
+    const prenom = String(formData.get('prenom') || '').trim();
+    const nom = String(formData.get('nom') || '').trim();
 
-    if (!email) {
-      setMessage('Merci d’indiquer un email valide.', 'error');
+    if (!email || !prenom || !nom) {
+      setMessage('Merci de remplir tous les champs obligatoires.', 'error');
       return;
     }
 
@@ -83,7 +84,7 @@
         const res = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Accept': 'application/json' },
-          body: JSON.stringify({ email, name, source: 'landing', variant })
+          body: JSON.stringify({ email, prenom, nom, source: 'landing', variant })
         });
         if (res.ok) {
           setMessage('Merci, vérifiez votre boîte mail.');
@@ -98,10 +99,10 @@
     }
 
     // Mailto fallback
-    const subject = encodeURIComponent('Liste d\'attente - Stoqa');
-    const body = encodeURIComponent(`Email: ${email}\nNom: ${name}\nVariant: ${variant}`);
+    const subject = encodeURIComponent('Liste d\'attente - Restocks');
+    const body = encodeURIComponent(`Prénom: ${prenom}\nNom: ${nom}\nEmail: ${email}\nVariant: ${variant}`);
     window.location.href = `mailto:hello@exemple.com?subject=${subject}&body=${body}`;
-    setMessage('Votre client mail va s’ouvrir. Si rien ne se passe, écrivez-nous: hello@exemple.com');
+    setMessage('Votre client mail va s\'ouvrir. Si rien ne se passe, écrivez-nous: hello@exemple.com');
     track('signup_submit', { variant, transport: 'mailto' });
   }
 

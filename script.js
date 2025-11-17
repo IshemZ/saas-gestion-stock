@@ -36,14 +36,14 @@
 
   const variants = {
     a: {
-      title: 'Arrêtez de perdre de l\'argent à cause de vos stocks.',
-      subtitle: 'Chaque rupture vous coûte des clients. Chaque surstock grignote votre marge. Notre outil anticipe vos besoins et automatise l\'inventaire — en 10 minutes par jour.',
-      cta: 'Je m\'inscris sur la liste d\'attente'
+      title: 'Automatisez votre gestion des stocks.',
+      subtitle: 'Des alertes intelligentes et des prévisions fiables qui vous aident à commander juste ce qu\'il faut, sans effort.',
+      cta: 'Être alerté du lancement'
     },
     b: {
       title: 'Anticipez vos besoins, protégez votre marge.',
       subtitle: 'Des alertes intelligentes et des prévisions fiables pour réduire les pertes et gagner du temps, sans complexité.',
-      cta: 'Rejoindre la liste d\'attente'
+      cta: 'Recevoir une alerte'
     }
   };
   const v = variants[variant] || variants.a;

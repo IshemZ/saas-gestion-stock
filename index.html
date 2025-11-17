@@ -56,39 +56,94 @@
       <section id="hero" class="section hero">
         <div class="container">
           <div class="hero__content">
-            <h1 id="hero-title">Arrêtez de perdre de l'argent à cause de vos stocks.</h1>
-            <p id="hero-subtitle" class="lead">Chaque rupture vous coûte des clients. Chaque surstock grignote votre marge. Notre outil anticipe vos besoins et automatise l'inventaire — en 10 minutes par jour.</p>
-            <a id="cta-main" href="#signup" class="btn btn-primary" data-cta>Je m'inscris sur la liste d'attente</a>
+            <h1 id="hero-title">Automatisez votre gestion des stocks.</h1>
+            <p id="hero-subtitle" class="lead">Des alertes intelligentes et des prévisions fiables qui vous aident à commander juste ce qu'il faut, sans effort.</p>
+            <a id="cta-main" href="#signup" class="btn btn-primary" data-cta>Être alerté du lancement</a>
           </div>
           <div class="hero__visual" aria-hidden="true">
-            <!-- Image illustration -->
-            <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=800&h=600&fit=crop&q=80" 
-                 alt="Chef vérifiant l'inventaire sur tablette" 
-                 class="mockup"
-                 loading="eager" />
+            <!-- Animation gestion de stocks -->
+            <div class="mockup animation-container">
+              <div class="stock-card">
+                <div class="stock-icon">📦</div>
+                <div class="stock-label">Tomates</div>
+                <div class="stock-bar">
+                  <div class="stock-level low"></div>
+                </div>
+                <div class="stock-alert">⚠️ Stock bas</div>
+              </div>
+              <div class="stock-card">
+                <div class="stock-icon">🥖</div>
+                <div class="stock-label">Pain</div>
+                <div class="stock-bar">
+                  <div class="stock-level ok"></div>
+                </div>
+              </div>
+              <div class="stock-card">
+                <div class="stock-icon">🧀</div>
+                <div class="stock-label">Fromage</div>
+                <div class="stock-bar">
+                  <div class="stock-level good"></div>
+                </div>
+              </div>
+              <div class="command-pulse">✓ Commande automatique créée</div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Benefits -->
+            <!-- Benefits -->
       <section id="benefits" class="section">
         <div class="container">
-          <h2>Douleurs que l’on résout</h2>
-          <ul class="grid">
-            <li>Ruptures imprévues qui déçoivent les clients</li>
-            <li>Surstocks périssables qui grignotent la marge</li>
-            <li>Inventaires longs, erreurs de saisie et fichiers épars</li>
-            <li>Visibilité limitée: coûts matière flous, écarts non expliqués</li>
-          </ul>
-          <h2>Bénéfices concrets</h2>
-          <ul class="grid">
-            <li>Anticipez les commandes grâce aux alertes et prévisions</li>
-            <li>Réduisez le gaspillage, protégez votre marge</li>
-            <li>Inventaires 2× plus rapides, moins d’erreurs</li>
-            <li>Décisions pilotées par des chiffres clairs (CM, marge, écarts)</li>
-          </ul>
+          <h2>Les problèmes que vous rencontrez</h2>
+          <div class="problems-grid">
+            <div class="problem-card">
+              <span class="problem-icon">❌</span>
+              <h3>Ruptures imprévues</h3>
+              <p>Clients déçus, ventes perdues, réputation impactée</p>
+            </div>
+            <div class="problem-card">
+              <span class="problem-icon">💸</span>
+              <h3>Surstocks périssables</h3>
+              <p>Produits jetés, argent gaspillé, marge qui fond</p>
+            </div>
+            <div class="problem-card">
+              <span class="problem-icon">⏰</span>
+              <h3>Inventaires chronophages</h3>
+              <p>Heures perdues, erreurs de saisie, fichiers épars</p>
+            </div>
+            <div class="problem-card">
+              <span class="problem-icon">📊</span>
+              <h3>Visibilité limitée</h3>
+              <p>Coûts matière flous, écarts non expliqués</p>
+            </div>
+          </div>
+
+          <h2 class="benefits-title">Ce que Stoqa vous apporte</h2>
+          <div class="benefits-grid">
+            <div class="benefit-card">
+              <span class="benefit-icon">🔔</span>
+              <h3>Anticipation</h3>
+              <p>Alertes avant rupture et prévisions fiables pour commander au bon moment</p>
+            </div>
+            <div class="benefit-card">
+              <span class="benefit-icon">💰</span>
+              <h3>Marge protégée</h3>
+              <p>Réduction du gaspillage et optimisation des achats</p>
+            </div>
+            <div class="benefit-card">
+              <span class="benefit-icon">⚡</span>
+              <h3>Gain de temps</h3>
+              <p>Inventaires automatisés, commandes pré-remplies, zéro saisie manuelle</p>
+            </div>
+            <div class="benefit-card">
+              <span class="benefit-icon">📈</span>
+              <h3>Pilotage en temps réel</h3>
+              <p>Tableaux de bord clairs : coûts matière, marges, écarts</p>
+            </div>
+          </div>
+          
           <div class="center">
-            <a href="#signup" class="btn btn-primary" data-cta>Je m’inscris</a>
+            <a href="#signup" class="btn btn-primary" data-cta>Être alerté du lancement</a>
           </div>
         </div>
       </section>
@@ -122,19 +177,23 @@
       <!-- Signup -->
       <section id="signup" class="section section-accent">
         <div class="container">
-          <h2>Rejoindre la liste d’attente</h2>
-          <p>Inscrivez‑vous pour être informé(e) du lancement en avant‑première.</p>
-          <form id="signup-form" class="form" novalidate data-endpoint="">
-            <!-- Si vous utilisez Formspree, mettez l’URL d’action ici via data-endpoint -->
+          <h2>Soyez alerté du lancement</h2>
+          <p>Inscrivez‑vous pour recevoir un email dès que Stoqa sera disponible.</p>
+          <form id="signup-form" class="form" novalidate data-endpoint="https://formspree.io/f/mldazwrv">
+            <!-- Si vous utilisez Formspree, mettez l'URL d'action ici via data-endpoint -->
             <div class="form-row">
-              <label for="email">Email</label>
+              <label for="prenom">Prénom *</label>
+              <input id="prenom" name="prenom" type="text" placeholder="Jean" required />
+            </div>
+            <div class="form-row">
+              <label for="nom">Nom *</label>
+              <input id="nom" name="nom" type="text" placeholder="Dupont" required />
+            </div>
+            <div class="form-row">
+              <label for="email">Email *</label>
               <input id="email" name="email" type="email" placeholder="vous@restaurant.com" required />
             </div>
-            <div class="form-row">
-              <label for="name">Nom</label>
-              <input id="name" name="name" type="text" placeholder="Votre nom (optionnel)" />
-            </div>
-            <button type="submit" class="btn btn-primary btn-block" data-cta>Je m’inscris</button>
+            <button type="submit" class="btn btn-primary btn-block" data-cta>M'inscrire</button>
             <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
             <p class="tiny">En vous inscrivant, vous acceptez de recevoir un email de confirmation.</p>
           </form>

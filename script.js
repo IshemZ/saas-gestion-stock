@@ -36,8 +36,8 @@
 
   const variants = {
     a: {
-      title: 'Fini les ruptures. Fini le gaspillage. Plus de marge.',
-      subtitle: 'L’outil simple qui anticipe vos besoins et automatise l’inventaire pour commander juste ce qu’il faut — en 10 minutes par jour.',
+      title: 'Arrêtez de perdre de l\'argent à cause de vos stocks.',
+      subtitle: 'Chaque rupture vous coûte des clients. Chaque surstock grignote votre marge. Notre outil anticipe vos besoins et automatise l\'inventaire — en 10 minutes par jour.',
       cta: 'Commencer mon essai gratuit'
     },
     b: {

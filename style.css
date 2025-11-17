@@ -156,19 +156,23 @@ img{max-width:100%; display:block}
   to{opacity:1; transform:translateX(0)}
 }
 @keyframes slideDown{
-  from{opacity:0; transform:translateY(-20px)}
-  to{opacity:1; transform:translateY(0)}
-}
-@keyframes shake{
-  0%,100%{transform:translateX(0)}
-  25%{transform:translateX(-4px)}
-  75%{transform:translateX(4px)}
+  from{
+    opacity:0;
+    transform:translateY(-30px) scale(0.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
 }
 @keyframes bellRing{
   0%,100%{transform:rotate(0deg)}
-  10%,30%{transform:rotate(-10deg)}
-  20%,40%{transform:rotate(10deg)}
-  50%{transform:rotate(0deg)}
+  15%{transform:rotate(-12deg)}
+  30%{transform:rotate(12deg)}
+  45%{transform:rotate(-8deg)}
+  60%{transform:rotate(8deg)}
+  75%{transform:rotate(-4deg)}
+  90%{transform:rotate(4deg)}
 }
 @keyframes fillBar{
   from{width:0}

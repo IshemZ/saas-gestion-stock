@@ -1,0 +1,118 @@
+(function(){
+  'use strict';
+
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const dataLayer = window.dataLayer = window.dataLayer || [];
+
+  // Year in footer
+  const yearEl = $('#year');
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  // Simple tracking helper (works with GTM dataLayer or no-op)
+  function track(event, payload = {}){
+    try {
+      dataLayer.push({ event, ...payload });
+    } catch(e) {
+      // no-op
+    }
+    if (window.plausible && typeof window.plausible === 'function') {
+      try { window.plausible(event, { props: payload }); } catch(_){}
+    }
+  }
+
+  // A/B testing (headline + CTA) with URL override & localStorage stickiness
+  const AB_KEY = 'ab_variant_stockresto';
+  const params = new URLSearchParams(window.location.search);
+  let variant = params.get('variant');
+  if (!variant) {
+    variant = localStorage.getItem(AB_KEY) || (Math.random() < 0.5 ? 'a' : 'b');
+  }
+  localStorage.setItem(AB_KEY, variant);
+
+  const heroTitle = $('#hero-title');
+  const heroSubtitle = $('#hero-subtitle');
+  const ctamain = $('#cta-main');
+
+  const variants = {
+    a: {
+      title: 'Fini les ruptures. Fini le gaspillage. Plus de marge.',
+      subtitle: 'L’outil simple qui anticipe vos besoins et automatise l’inventaire pour commander juste ce qu’il faut — en 10 minutes par jour.',
+      cta: 'Commencer mon essai gratuit'
+    },
+    b: {
+      title: 'Anticipez vos besoins, protégez votre marge.',
+      subtitle: 'Des alertes intelligentes et des prévisions fiables pour réduire les pertes et gagner du temps, sans complexité.',
+      cta: 'Découvrir la démo'
+    }
+  };
+  const v = variants[variant] || variants.a;
+  if (heroTitle) heroTitle.textContent = v.title;
+  if (heroSubtitle) heroSubtitle.textContent = v.subtitle;
+  if (ctamain) ctamain.textContent = v.cta;
+  track('variant_assigned', { variant });
+
+  // CTA tracking
+  $$('[data-cta]').forEach(el => {
+    el.addEventListener('click', () => track('cta_click', { id: el.id || 'cta', variant }));
+  });
+
+  // Form handling (supports Formspree or mailto fallback)
+  const form = $('#signup-form');
+  const msg = $('#form-message');
+
+  async function submitForm(e){
+    e.preventDefault();
+    if (!form) return;
+
+    const endpoint = form.getAttribute('data-endpoint') || '';
+    const formData = new FormData(form);
+    const email = String(formData.get('email') || '').trim();
+    const name = String(formData.get('name') || '').trim();
+
+    if (!email) {
+      setMessage('Merci d’indiquer un email valide.', 'error');
+      return;
+    }
+
+    setMessage('Envoi en cours…');
+    track('signup_start', { variant });
+
+    if (endpoint) {
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: JSON.stringify({ email, name, source: 'landing', variant })
+        });
+        if (res.ok) {
+          setMessage('Merci, vérifiez votre boîte mail.');
+          form.reset();
+          track('signup_submit', { variant, transport: 'fetch' });
+          return;
+        }
+        throw new Error('Bad status ' + res.status);
+      } catch(err) {
+        // fallback to mailto if fetch fails
+      }
+    }
+
+    // Mailto fallback
+    const subject = encodeURIComponent('Liste d’attente – StockResto');
+    const body = encodeURIComponent(`Email: ${email}\nNom: ${name}\nVariant: ${variant}`);
+    window.location.href = `mailto:hello@exemple.com?subject=${subject}&body=${body}`;
+    setMessage('Votre client mail va s’ouvrir. Si rien ne se passe, écrivez-nous: hello@exemple.com');
+    track('signup_submit', { variant, transport: 'mailto' });
+  }
+
+  function setMessage(text, type){
+    if (!msg) return;
+    msg.textContent = text;
+    msg.className = 'form-message' + (type ? ` ${type}` : '');
+  }
+
+  if (form) form.addEventListener('submit', submitForm);
+
+  // Page view
+  track('page_view');
+})();

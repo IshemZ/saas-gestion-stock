@@ -22,7 +22,7 @@
   }
 
   // A/B testing (headline + CTA) with URL override & localStorage stickiness
-  const AB_KEY = 'ab_variant_stockresto';
+  const AB_KEY = 'ab_variant_stoqa';
   const params = new URLSearchParams(window.location.search);
   let variant = params.get('variant');
   if (!variant) {
@@ -98,7 +98,7 @@
     }
 
     // Mailto fallback
-    const subject = encodeURIComponent('Liste d’attente – StockResto');
+    const subject = encodeURIComponent('Liste d\'attente - Stoqa');
     const body = encodeURIComponent(`Email: ${email}\nNom: ${name}\nVariant: ${variant}`);
     window.location.href = `mailto:hello@exemple.com?subject=${subject}&body=${body}`;
     setMessage('Votre client mail va s’ouvrir. Si rien ne se passe, écrivez-nous: hello@exemple.com');

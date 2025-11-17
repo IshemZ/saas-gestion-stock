@@ -43,9 +43,11 @@ img{max-width:100%; display:block}
   padding:24px;
   border-radius:16px;
   box-shadow:0 4px 24px rgba(234,88,12,.1);
+  min-height:320px;
   display:flex;
   flex-direction:column;
   gap:12px;
+  justify-content:center;
 }
 @media(min-width:768px){
   .animation-container{padding:32px; gap:16px}
@@ -60,7 +62,9 @@ img{max-width:100%; display:block}
   gap:10px;
   align-items:center;
   box-shadow:0 2px 8px rgba(0,0,0,.04);
-  transition:transform .3s ease, box-shadow .3s ease;
+  animation:slideIn .6s ease forwards;
+  opacity:0;
+  transform:translateX(-20px);
 }
 @media(min-width:768px){
   .stock-card{
@@ -69,10 +73,9 @@ img{max-width:100%; display:block}
     gap:12px;
   }
 }
-.stock-card:hover{
-  transform:translateY(-2px);
-  box-shadow:0 4px 16px rgba(234,88,12,.15);
-}
+.stock-card:nth-child(1){animation-delay:.2s}
+.stock-card:nth-child(2){animation-delay:.5s}
+.stock-card:nth-child(3){animation-delay:.8s}
 
 .stock-icon{
   font-size:28px;
@@ -95,19 +98,23 @@ img{max-width:100%; display:block}
 .stock-level{
   height:100%;
   border-radius:6px;
-  transition:width .8s ease;
+  animation:fillBar 1.5s ease forwards;
+  width:0;
 }
 .stock-level.low{
   background:linear-gradient(90deg,#dc2626,#ef4444);
-  width:20%;
+  animation-delay:1s;
+  --target-width:20%;
 }
 .stock-level.ok{
   background:linear-gradient(90deg,#f59e0b,#fbbf24);
-  width:55%;
+  animation-delay:1.3s;
+  --target-width:55%;
 }
 .stock-level.good{
   background:linear-gradient(90deg,#10b981,#34d399);
-  width:85%;
+  animation-delay:1.6s;
+  --target-width:85%;
 }
 .stock-alert{
   grid-column:2/4;
@@ -117,6 +124,8 @@ img{max-width:100%; display:block}
   display:flex;
   align-items:center;
   gap:4px;
+  animation:pulse 2s ease infinite;
+  animation-delay:1.2s;
 }
 @media(min-width:768px){
   .stock-alert{font-size:13px}
@@ -131,6 +140,9 @@ img{max-width:100%; display:block}
   font-size:14px;
   box-shadow:0 4px 16px rgba(16,185,129,.25);
   margin-top:4px;
+  animation:slideUp 1s ease 2.2s forwards, glowGreen 2s ease 2.5s infinite;
+  opacity:0;
+  transform:translateY(10px);
 }
 @media(min-width:768px){
   .command-pulse{
@@ -139,7 +151,41 @@ img{max-width:100%; display:block}
   }
 }
 
-
+@keyframes slideIn{
+  from{opacity:0; transform:translateX(-20px)}
+  to{opacity:1; transform:translateX(0)}
+}
+@keyframes slideDown{
+  from{opacity:0; transform:translateY(-20px)}
+  to{opacity:1; transform:translateY(0)}
+}
+@keyframes shake{
+  0%,100%{transform:translateX(0)}
+  25%{transform:translateX(-4px)}
+  75%{transform:translateX(4px)}
+}
+@keyframes bellRing{
+  0%,100%{transform:rotate(0deg)}
+  10%,30%{transform:rotate(-10deg)}
+  20%,40%{transform:rotate(10deg)}
+  50%{transform:rotate(0deg)}
+}
+@keyframes fillBar{
+  from{width:0}
+  to{width:var(--target-width, 50%)}
+}
+@keyframes slideUp{
+  from{opacity:0; transform:translateY(10px)}
+  to{opacity:1; transform:translateY(0)}
+}
+@keyframes pulse{
+  0%,100%{opacity:1}
+  50%{opacity:.6}
+}
+@keyframes glowGreen{
+  0%,100%{box-shadow:0 4px 16px rgba(16,185,129,.25)}
+  50%{box-shadow:0 6px 24px rgba(16,185,129,.5)}
+}
 
 h2{font-size: clamp(22px, 3vw, 28px); margin:0 0 16px}
 .benefits-title{margin-top:64px}
